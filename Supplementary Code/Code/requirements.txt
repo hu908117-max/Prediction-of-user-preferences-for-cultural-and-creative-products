@@ -1,0 +1,15 @@
+# Museum cultural-product user-preference prediction project
+# Python 3.10+ ; CPU-only demo runs are fully supported.
+numpy>=1.23
+scipy>=1.9
+matplotlib>=3.6
+scikit-learn>=1.1
+pandas>=1.4
+pyyaml>=6.0
+tqdm>=4.64
+pillow>=9.0
+torch>=2.0
+# Optional (only required to use the real Qwen2.5-VL backbone):
+# transformers>=4.40
+# qwen-vl-utils>=0.0.8
+# huggingface_hub>=0.20   # optional, for downloading the real ArtEmis release

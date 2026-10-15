@@ -1,0 +1,45 @@
+# Default configuration for the proposed museum cultural-product
+# user-preference prediction method.
+#
+# These values mirror the "Experimental Setup" section of the manuscript
+# (hidden layer dimension 1024, LoRA rank 8, AdamW, batch size 64, max epochs 50,
+# tau = 0.07, lambda_1 = 0.5, lambda_2 = 0.3). The demo run uses a smaller hidden
+# dimension and a CPU-friendly backbone; the Qwen2.5-VL backbone with hidden_dim
+# 1024 is selected by setting `backbone: qwen2.5-vl` and `use_qwen: true`.
+
+data:
+  num_artworks: 1200
+  num_viewers: 400
+  num_groups: 4
+  style_dim: 64
+  vis_in: 256
+  txt_in: 256
+  train_frac: 0.7
+  val_frac: 0.1
+  test_frac: 0.2
+  seed: 20240715
+
+model:
+  backbone: lightweight      # "lightweight" (demo/CPU) or "qwen2.5-vl"
+  use_qwen: false
+  hidden_dim: 1024           # 1024 in the manuscript; 256 used for the CPU demo
+  num_vis_tokens: 16
+  num_txt_tokens: 16
+  num_heads: 4
+  bilinear_dim: 256
+  mlp_hidden: 512
+  dropout: 0.1
+  lora_rank: 8
+  lora_alpha: 16.0
+  lora_dropout: 0.05
+
+training:
+  epochs: 50
+  batch_size: 64
+  lora_lr: 2.0e-4
+  task_lr: 1.0e-3
+  weight_decay: 1.0e-4
+  patience: 10               # early stopping patience
+  tau: 0.07
+  lambda1: 0.5
+  lambda2: 0.3
